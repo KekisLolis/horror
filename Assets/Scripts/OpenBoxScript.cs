@@ -8,6 +8,7 @@ public class OpenBoxScript : MonoBehaviour
     public GameObject keyOBNeeded;
     public GameObject openText;
     public GameObject keyMissingText;
+    public GameObject batteries;
     public AudioSource openSound;
 
     public bool inReach;
@@ -59,6 +60,7 @@ public class OpenBoxScript : MonoBehaviour
 
         if(isOpen)
         {
+            batteries.SetActive(true);
             boxOB.GetComponent<BoxCollider>().enabled = false;
             boxOB.GetComponent<OpenBoxScript>().enabled = false;
         }
