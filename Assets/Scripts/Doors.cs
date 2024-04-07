@@ -17,7 +17,7 @@ public class Doors : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Reach")
+        if (other.gameObject.CompareTag("Reach"))
         {
             inReach = true;
             openText.SetActive(true);
@@ -26,7 +26,7 @@ public class Doors : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Reach")
+        if (other.gameObject.CompareTag("Reach"))
         {
             inReach = false;
             openText.SetActive(false);
