@@ -7,6 +7,12 @@ using TMPro;
 public class FlashlightAdvanced : MonoBehaviour
 {
     public new Light light;
+    public GameObject batteryCharge;
+    public GameObject battery100;
+    public GameObject battery80;
+    public GameObject battery50;
+    public GameObject battery25;
+    public GameObject battery0;
     public TMP_Text text;
     public TMP_Text batteryText;
 
@@ -54,6 +60,7 @@ public class FlashlightAdvanced : MonoBehaviour
 
         if(lifetime <= 0)
         {
+            battery0.SetActive(true);
             light.enabled = false;
             on = false;
             off = true;
@@ -62,7 +69,23 @@ public class FlashlightAdvanced : MonoBehaviour
 
         if (lifetime >= 100)
         {
+            battery100.SetActive(true);
             lifetime = 100;
+        }
+        else if (lifetime >= 75)
+        {
+            battery100.SetActive(false);
+            battery80.SetActive(true);
+        }
+        else if (lifetime >= 40)
+        {
+            battery80.SetActive(false);
+            battery50.SetActive(true);
+        }
+        else if (lifetime >= 15)
+        {
+            battery50.SetActive(false);
+            battery25.SetActive(true);
         }
 
         if (Input.GetButtonDown("reload") && batteries >= 1)
@@ -79,6 +102,11 @@ public class FlashlightAdvanced : MonoBehaviour
         if(batteries <= 0)
         {
             batteries = 0;
+            batteryCharge.SetActive(false);
+        }
+        else
+        {
+            batteryCharge.SetActive(true);
         }
     }
 }
